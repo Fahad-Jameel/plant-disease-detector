@@ -1,0 +1,107 @@
+{
+  "Tomato_Bacterial_spot": {
+    "name": "Tomato Bacterial Spot",
+    "description": "Bacterial spot is a common disease of tomatoes caused by Xanthomonas species of bacteria. It affects all above-ground parts of the plant, particularly the leaves and fruit.",
+    "symptoms": "Small, water-soaked spots on leaves that enlarge to angular or irregular dark brown spots. Severe infections can cause leaves to turn yellow and drop. On fruits, spots are small, slightly raised, and have a scabby surface.",
+    "treatment": "Remove infected plant parts. Apply copper-based bactericides early in the season. Rotate crops and avoid overhead irrigation.",
+    "prevention": "Use disease-free seeds and transplants. Rotate crops with non-host plants. Space plants for good air circulation. Avoid working in the garden when plants are wet."
+  },
+  "Tomato_Early_blight": {
+    "name": "Tomato Early Blight",
+    "description": "Early blight is a fungal disease caused by Alternaria solani. It is one of the most common tomato diseases, occurring nearly every season wherever tomatoes are grown.",
+    "symptoms": "Dark, concentric rings on lower leaves creating a target-like pattern. Leaves may turn yellow around the spots, eventually browning and dropping off. Stems and fruit can also be infected.",
+    "treatment": "Remove and destroy infected leaves. Apply fungicides labeled for early blight control. Maintain adequate nutrition to help plants recover.",
+    "prevention": "Plant resistant varieties. Use mulch to prevent spores from splashing onto leaves. Rotate crops. Water at the base of plants to keep foliage dry."
+  },
+  "Tomato_Late_blight": {
+    "name": "Tomato Late Blight",
+    "description": "Late blight is a destructive disease caused by the fungus-like organism Phytophthora infestans. It's the same disease that caused the Irish potato famine in the 1840s.",
+    "symptoms": "Pale to dark green water-soaked spots on leaves that quickly enlarge to become brown-black, oily-appearing lesions. White, fuzzy growth may appear on the underside of affected leaves. Stems and fruits develop dark lesions and fruit may rot.",
+    "treatment": "Remove and destroy infected plants immediately. Apply fungicides preventatively before disease appears. Late blight is very difficult to control once established.",
+    "prevention": "Plant resistant varieties. Avoid overhead irrigation. Improve air circulation. Monitor for disease especially during cool, wet conditions."
+  },
+  "Tomato_Leaf_Mold": {
+    "name": "Tomato Leaf Mold",
+    "description": "Leaf mold is a fungal disease caused by Passalora fulva. It is primarily a problem in greenhouses or in outdoor production during periods of high humidity and mild temperatures.",
+    "symptoms": "Pale green or yellow spots on the upper leaf surfaces. These areas correspond with olive-green to grayish-purple velvety mold on the undersides. Severely infected leaves may turn yellow, wither, and drop.",
+    "treatment": "Remove and destroy infected leaves. Improve air circulation. Apply fungicides labeled for leaf mold control.",
+    "prevention": "Plant resistant varieties. Provide good air circulation. Reduce humidity in greenhouses. Avoid wetting leaves when watering."
+  },
+  "Tomato_Septoria_leaf_spot": {
+    "name": "Tomato Septoria Leaf Spot",
+    "description": "Septoria leaf spot is a common disease of tomato caused by the fungus Septoria lycopersici. It is one of the most destructive diseases of tomato foliage.",
+    "symptoms": "Small, circular spots with dark borders and light gray centers. Spots may have yellow halos. Lower leaves are infected first, and the disease progresses upward. Severe infections can cause significant defoliation.",
+    "treatment": "Remove infected leaves and improve air circulation. Apply fungicides preventatively before disease appears. Maintain proper nutrition.",
+    "prevention": "Rotate crops. Mulch around plants. Avoid wetting leaves when watering. Sanitize garden tools and remove plant debris at the end of the season."
+  },
+  "Tomato_Spider_mites_Two_spotted_spider_mite": {
+    "name": "Tomato Spider Mites",
+    "description": "Two-spotted spider mites are tiny arachnids that feed on plant cells. They thrive in hot, dry conditions and can rapidly reproduce, causing significant damage.",
+    "symptoms": "Fine stippling or yellow speckling on leaves. Leaves may appear bronzed or silvery. Fine webbing may be visible on the undersides of leaves and between stems. Severe infestations cause leaves to dry up and fall off.",
+    "treatment": "Spray plants forcefully with water to dislodge mites. Apply insecticidal soap or horticultural oil. Biological controls such as predatory mites can be effective. In severe cases, use miticides.",
+    "prevention": "Maintain adequate humidity and moisture. Monitor plants regularly. Avoid drought stress. Introduce or encourage natural predators."
+  },
+  "Tomato__Target_Spot": {
+    "name": "Tomato Target Spot",
+    "description": "Target spot is a fungal disease caused by Corynespora cassiicola. It can affect all above-ground parts of the tomato plant.",
+    "symptoms": "Brown to black circular lesions with concentric rings forming a target-like pattern on leaves, stems, and fruit. Leaf spots may coalesce, causing blight and defoliation. Fruit lesions may be sunken with raised margins.",
+    "treatment": "Remove and destroy infected plant parts. Apply fungicides preventatively in areas with a history of the disease. Ensure adequate plant nutrition.",
+    "prevention": "Rotate crops. Provide adequate spacing for air circulation. Avoid overhead irrigation. Remove and destroy crop debris after harvest."
+  },
+  "Tomato__Tomato_YellowLeaf__Curl_Virus": {
+    "name": "Tomato Yellow Leaf Curl Virus",
+    "description": "Tomato yellow leaf curl virus (TYLCV) is a viral disease transmitted by whiteflies. It is one of the most devastating tomato diseases worldwide.",
+    "symptoms": "Leaves curl upward and appear crumpled. Leaflets are reduced in size and may show yellow margins. Plants stunted with reduced fruit set. Fruits may be small and deformed.",
+    "treatment": "There is no cure for infected plants, which should be removed and destroyed. Control whitefly populations with insecticides or insecticidal soaps. Use reflective mulches to repel whiteflies.",
+    "prevention": "Plant resistant varieties. Use insect screens or row covers. Control whitefly populations. Maintain weed-free areas around tomato plants. Avoid planting during peak whitefly season."
+  },
+  "Tomato__Tomato_mosaic_virus": {
+    "name": "Tomato Mosaic Virus",
+    "description": "Tomato mosaic virus (ToMV) and tobacco mosaic virus (TMV) are closely related viruses that cause similar symptoms. They can be transmitted mechanically and through seeds.",
+    "symptoms": "Light and dark green mottled areas on leaves, often with distortion or 'fernleaf' appearance. Stunted plant growth. Fruits may show yellow rings or blotches and internal browning.",
+    "treatment": "There is no cure for infected plants, which should be removed and destroyed. Disinfect tools and hands after handling infected plants.",
+    "prevention": "Use virus-free seeds and transplants. Plant resistant varieties. Wash hands and disinfect tools after handling tobacco products. Control insects that may spread the virus."
+  },
+  "Tomato_healthy": {
+    "name": "Healthy Tomato Plant",
+    "description": "This tomato plant appears healthy with no visible signs of disease or pest infestation.",
+    "symptoms": "A healthy tomato plant has vibrant green leaves, strong stems, and normal growth patterns. Flowers and fruit development proceed without abnormalities.",
+    "treatment": "No treatment needed. Continue with regular care practices.",
+    "prevention": "Maintain good gardening practices: proper watering, adequate nutrition, appropriate spacing, regular monitoring, and preventive measures against common diseases and pests."
+  },
+  "Pepper__bell___Bacterial_spot": {
+    "name": "Pepper Bell Bacterial Spot",
+    "description": "Bacterial spot in peppers is caused by Xanthomonas species. It's a common disease in warm, humid regions and can cause significant crop losses.",
+    "symptoms": "Small, water-soaked spots on leaves that enlarge to dark brown lesions. Spots may have yellow halos. Leaves may yellow and drop. Fruit develops raised, rough, corky spots.",
+    "treatment": "Remove infected plant parts. Apply copper-based bactericides early in the season. Maintain proper plant nutrition.",
+    "prevention": "Use disease-free seeds and transplants. Rotate crops. Avoid overhead irrigation. Space plants for good air circulation. Practice good sanitation."
+  },
+  "Pepper__bell___healthy": {
+    "name": "Healthy Bell Pepper Plant",
+    "description": "This bell pepper plant appears healthy with no visible signs of disease or pest damage.",
+    "symptoms": "A healthy pepper plant has vibrant green leaves, strong stems, and normal growth patterns. Flowers and fruit development proceed without abnormalities.",
+    "treatment": "No treatment needed. Continue with regular care practices.",
+    "prevention": "Maintain good gardening practices: proper watering, adequate nutrition, appropriate spacing, regular monitoring, and preventive measures against common diseases and pests."
+  },
+  "Potato___Early_blight": {
+    "name": "Potato Early Blight",
+    "description": "Early blight in potatoes is caused by the fungus Alternaria solani. It is a common foliar disease found wherever potatoes are grown.",
+    "symptoms": "Dark, concentric rings on lower leaves creating a target-like pattern. Leaves may turn yellow around the spots, eventually browning and dying. Stem lesions may occur as oval, dark brown spots.",
+    "treatment": "Remove and destroy infected leaves. Apply fungicides labeled for early blight control. Maintain adequate nutrition to help plants recover.",
+    "prevention": "Plant resistant varieties. Use certified disease-free seed potatoes. Rotate crops. Improve air circulation. Use mulch to prevent soil splash."
+  },
+  "Potato___Late_blight": {
+    "name": "Potato Late Blight",
+    "description": "Late blight is caused by the oomycete Phytophthora infestans. It's an aggressive disease that can rapidly kill plants and is infamous for causing the Irish potato famine in the 1840s.",
+    "symptoms": "Pale to dark green water-soaked spots on leaves that quickly enlarge to become brown-black, oily-appearing lesions. White, fuzzy growth may appear on the underside of affected leaves in humid conditions. Infected tubers show coppery-brown, granular dry rot.",
+    "treatment": "Remove and destroy infected plants immediately. Apply fungicides preventatively. Late blight is very difficult to control once established.",
+    "prevention": "Plant resistant varieties. Destroy volunteer potatoes. Improve air circulation. Plant certified disease-free seed potatoes. Monitor for disease, especially during cool, wet conditions."
+  },
+  "Potato___healthy": {
+    "name": "Healthy Potato Plant",
+    "description": "This potato plant appears healthy with no visible signs of disease or pest damage.",
+    "symptoms": "A healthy potato plant has vibrant green leaves, strong stems, and normal growth patterns. Underground tubers develop properly without lesions or rot.",
+    "treatment": "No treatment needed. Continue with regular care practices.",
+    "prevention": "Maintain good gardening practices: proper watering, adequate nutrition, appropriate spacing, regular monitoring, and preventive measures against common diseases and pests."
+  }
+}

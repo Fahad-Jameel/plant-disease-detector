@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}About - Plant Disease Detector{% endblock %}
+{% block nav_about %}active{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+    <div class="about-content fade-in">
+        <h1>About the <span class="highlight">Project</span></h1>
+        <p>A deep learning approach to identify plant diseases and provide treatment recommendations</p>
+    </div>
+</section>
+
+<section class="about-details">
+    <div class="about-section fade-in-up">
+        <h2>Project <span class="highlight">Overview</span></h2>
+        <p>This project implements a deep learning-based image classification system to detect and diagnose plant diseases using convolutional neural networks (CNNs) and other state-of-the-art models. By leveraging the PlantVillage dataset, the system is trained to classify various diseases affecting crops such as tomatoes, potatoes, and peppers.</p>
+        <p>The goal is to provide farmers and gardeners with a quick, accessible tool for early disease detection, enabling timely interventions and reducing crop losses. The system uses advanced image processing techniques to identify patterns associated with different plant diseases and provides actionable treatment recommendations.</p>
+    </div>
+    
+    <div class="about-section fade-in-up" style="animation-delay: 0.2s;">
+        <h2>Technical <span class="highlight">Approach</span></h2>
+        <div class="tech-container">
+            <div class="tech-card">
+                <div class="tech-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Dataset</h3>
+                <p>The system uses the PlantVillage dataset, which contains thousands of labeled images of healthy and diseased plant leaves across various crop species.</p>
+            </div>
+            
+            <div class="tech-card">
+                <div class="tech-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Models</h3>
+                <p>Multiple deep learning models were implemented and compared, including a custom CNN, ResNet50, MobileNetV2, and EfficientNetB0.</p>
+            </div>
+            
+            <div class="tech-card">
+                <div class="tech-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Evaluation</h3>
+                <p>Models were evaluated using metrics such as accuracy, precision, recall, and F1-score to ensure reliable disease classification.</p>
+            </div>
+            
+            <div class="tech-card">
+                <div class="tech-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Visualization</h3>
+                <p>Grad-CAM technique is used to generate heatmaps that highlight the regions of the image most influential to the model's prediction.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="about-section fade-in-up" style="animation-delay: 0.4s;">
+        <h2>Project <span class="highlight">Architecture</span></h2>
+        <div class="architecture-diagram">
+            <div class="architecture-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Data Preprocessing</h3>
+                    <p>Images are resized, normalized, and augmented to improve model generalization</p>
+                </div>
+            </div>
+            
+            <div class="architecture-connector"></div>
+            
+            <div class="architecture-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Model Training</h3>
+                    <p>Deep learning models are trained using transfer learning and fine-tuning approaches</p>
+                </div>
+            </div>
+            
+            <div class="architecture-connector"></div>
+            
+            <div class="architecture-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Evaluation</h3>
+                    <p>Models are evaluated on held-out validation data to ensure reliable performance</p>
+                </div>
+            </div>
+            
+            <div class="architecture-connector"></div>
+            
+            <div class="architecture-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Deployment</h3>
+                    <p>The best model is deployed in a Flask application with a user-friendly interface</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="about-section fade-in-up" style="animation-delay: 0.6s;">
+        <h2>Future <span class="highlight">Enhancements</span></h2>
+        <div class="enhancements-container">
+            <div class="enhancement-item">
+                <i class="fas fa-mobile-alt"></i>
+                <div>
+                    <h3>Mobile Application</h3>
+                    <p>Develop a mobile app version for on-the-field diagnosis</p>
+                </div>
+            </div>
+            
+            <div class="enhancement-item">
+                <i class="fas fa-globe"></i>
+                <div>
+                    <h3>More Crop Species</h3>
+                    <p>Expand the model to support additional crop types and diseases</p>
+                </div>
+            </div>
+            
+            <div class="enhancement-item">
+                <i class="fas fa-language"></i>
+                <div>
+                    <h3>Multi-language Support</h3>
+                    <p>Add support for multiple languages to reach a wider audience</p>
+                </div>
+            </div>
+            
+            <div class="enhancement-item">
+                <i class="fas fa-camera"></i>
+                <div>
+                    <h3>Real-time Analysis</h3>
+                    <p>Implement real-time analysis from camera feed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="about-section fade-in-up" style="animation-delay: 0.8s;">
+        <h2>About the <span class="highlight">Developer</span></h2>
+        <div class="developer-info">
+            <div class="developer-image">
+                <img src="{{ url_for('static', filename='img/developer.png') }}" alt="Developer">
+            </div>
+            <div class="developer-details">
+                <h3>Fahad Jameel</h3>
+                <p class="developer-title">Deep Learning for Perception Course Project</p>
+                <p>This project was developed as part of the Deep Learning for Perception course. It aims to apply advanced computer vision techniques to solve real-world problems in agriculture.</p>
+                <div class="developer-links">
+                    <a href="https://github.com/Fahad-Jameel" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/fahad-jameel/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

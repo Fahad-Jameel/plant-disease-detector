@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Plant Disease Detector{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/animations.css">
+    
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/">
+                    <i class="fas fa-leaf"></i>
+                    <span>Plant Disease Detector</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/" class="{% block nav_home %}{% endblock %}">Home</a></li>
+                <li><a href="/models" class="{% block nav_models %}{% endblock %}">Models</a></li>
+                <li><a href="/about" class="{% block nav_about %}{% endblock %}">About</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i>
+                <span>Plant Disease Detector</span>
+            </div>
+            <div class="footer-text">
+                <p>Developed by Fahad Jameel</p>
+                <p>Deep Learning for Perception Course Project</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/Fahad-Jameel" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/fahad-jameel/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../static/js/main.js"></script>
+    <script src="../static/js/animations.js"></script>
+    {% block scripts %}{% endblock %}
+    
+</body>
+</html>
+

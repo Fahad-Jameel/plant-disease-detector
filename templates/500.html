@@ -1,0 +1,20 @@
+<!-- 500.html -->
+{% extends "base.html" %}
+
+{% block title %}Server Error - Plant Disease Detector{% endblock %}
+
+{% block content %}
+<section class="error-page">
+    <div class="error-content">
+        <div class="error-icon">
+            <i class="fas fa-bug"></i>
+            <div class="error-code">500</div>
+        </div>
+        <h1>Server Error</h1>
+        <p>Something went wrong on our end. Please try again later.</p>
+        <a href="/" class="return-btn">
+            <i class="fas fa-home"></i> Return to Home
+        </a>
+    </div>
+</section>
+{% endblock %}

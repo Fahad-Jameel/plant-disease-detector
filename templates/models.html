@@ -1,0 +1,343 @@
+{% extends "base.html" %}
+
+{% block title %}Models - Plant Disease Detector{% endblock %}
+{% block nav_models %}active{% endblock %}
+
+{% block content %}
+<section class="models-hero">
+    <div class="models-content fade-in">
+        <h1>Available <span class="highlight">Models</span></h1>
+        <p>Choose from multiple deep learning models for plant disease detection</p>
+    </div>
+</section>
+
+<section class="models-details">
+    <div class="models-section fade-in-up">
+        <h2>Model <span class="highlight">Selection</span></h2>
+        <p>Our system offers multiple deep learning models for plant disease detection. Each model has different strengths and characteristics. Select the model that best fits your needs.</p>
+        
+        <div class="models-container">
+            {% for model_key, model in models.items() %}
+            <div class="model-card" data-model="{{ model_key }}">
+                <div class="model-header">
+                    <h3>{{ model.name }}</h3>
+                    <span class="model-badge">{{ model_key }}</span>
+                </div>
+                <p>{{ model.description }}</p>
+                <button class="select-model-btn" data-model="{{ model_key }}">
+                    Select This Model
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="models-section fade-in-up" style="animation-delay: 0.2s;">
+        <h2>Model <span class="highlight">Comparison</span></h2>
+        <div class="comparison-table-container">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Accuracy</th>
+                        <th>Speed</th>
+                        <th>Size</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Custom CNN</td>
+                        <td>92%</td>
+                        <td>Fast</td>
+                        <td>Medium</td>
+                        <td>General purpose detection</td>
+                    </tr>
+                    <tr>
+                        <td>ResNet50</td>
+                        <td>95%</td>
+                        <td>Medium</td>
+                        <td>Large</td>
+                        <td>High accuracy needs</td>
+                    </tr>
+                    <tr>
+                        <td>EfficientNet B3</td>
+                        <td>97%</td>
+                        <td>Medium</td>
+                        <td>Medium</td>
+                        <td>Best overall performance</td>
+                    </tr>
+                    <tr>
+                        <td>MobileNet V2</td>
+                        <td>93%</td>
+                        <td>Very Fast</td>
+                        <td>Small</td>
+                        <td>Quick results</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="models-section fade-in-up" style="animation-delay: 0.4s;">
+        <h2>Technical <span class="highlight">Architecture</span></h2>
+        <div class="architecture-tabs">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="custom-cnn">Custom CNN</button>
+                <button class="tab-button" data-tab="resnet">ResNet50</button>
+                <button class="tab-button" data-tab="efficientnet">EfficientNet</button>
+                <button class="tab-button" data-tab="mobilenet">MobileNet</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="custom-cnn">
+                    <h3>Custom CNN Architecture</h3>
+                    <div class="architecture-diagram">
+                        <ul class="layer-list">
+                            <li class="layer">
+                                <div class="layer-icon"><i class="fas fa-image"></i></div>
+                                <div class="layer-info">
+                                    <h4>Input Layer</h4>
+                                    <p>256×256×3 RGB Image</p>
+                                </div>
+                            </li>
+                            <li class="layer-connector"></li>
+                            <li class="layer">
+                                <div class="layer-icon"><i class="fas fa-filter"></i></div>
+                                <div class="layer-info">
+                                    <h4>Convolutional Blocks</h4>
+                                    <p>5 Conv Blocks (Conv2D, BatchNorm, MaxPool)</p>
+                                </div>
+                            </li>
+                            <li class="layer-connector"></li>
+                            <li class="layer">
+                                <div class="layer-icon"><i class="fas fa-expand"></i></div>
+                                <div class="layer-info">
+                                    <h4>Flatten Layer</h4>
+                                    <p>Convert 3D features to 1D vector</p>
+                                </div>
+                            </li>
+                            <li class="layer-connector"></li>
+                            <li class="layer">
+                                <div class="layer-icon"><i class="fas fa-network-wired"></i></div>
+                                <div class="layer-info">
+                                    <h4>Dense Layers</h4>
+                                    <p>512 neurons with dropout</p>
+                                </div>
+                            </li>
+                            <li class="layer-connector"></li>
+                            <li class="layer">
+                                <div class="layer-icon"><i class="fas fa-list-ol"></i></div>
+                                <div class="layer-info">
+                                    <h4>Output Layer</h4>
+                                    <p>15 classes with softmax activation</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane" id="resnet">
+                    <h3>ResNet50 Architecture</h3>
+                    <p>ResNet50 is a 50-layer deep convolutional neural network that introduced residual connections to solve the vanishing gradient problem in very deep networks.</p>
+                    <div class="model-feature-list">
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-link"></i></div>
+                            <!-- Continuing models.html from previous part -->
+                            <div class="feature-info">
+                                <h4>Residual Connections</h4>
+                                <p>Skip connections that allow gradients to flow through the network</p>
+                            </div>
+                        </div>
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="feature-info">
+                                <h4>Deep Architecture</h4>
+                                <p>50 layers organized in blocks with bottleneck design</p>
+                            </div>
+                        </div>
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                            <div class="feature-info">
+                                <h4>Bottleneck Design</h4>
+                                <p>Efficient parameter usage with 1×1 convolutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="efficientnet">
+                    <h3>EfficientNet B3 Architecture</h3>
+                    <p>EfficientNet uses a compound scaling method to balance network depth, width, and resolution for optimal performance.</p>
+                    <div class="model-feature-list">
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
+                            <div class="feature-info">
+                                <h4>Compound Scaling</h4>
+                                <p>Balanced scaling of depth, width, and resolution</p>
+                            </div>
+                        </div>
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="feature-info">
+                                <h4>Mobile Inverted Bottleneck</h4>
+                                <p>Efficient building blocks for mobile-friendly design</p>
+                            </div>
+                        </div>
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                            <div class="feature-info">
+                                <h4>Squeeze and Excitation</h4>
+                                <p>Adaptive feature recalibration for improved performance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="mobilenet">
+                    <h3>MobileNet V2 Architecture</h3>
+                    <p>MobileNet V2 is designed for mobile and edge devices with limited computational resources.</p>
+                    <div class="model-feature-list">
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-feather"></i></div>
+                            <div class="feature-info">
+                                <h4>Lightweight Design</h4>
+                                <p>Optimized for mobile devices with minimal parameters</p>
+                            </div>
+                        </div>
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                            <div class="feature-info">
+                                <h4>Inverted Residuals</h4>
+                                <p>Expands channels before depthwise convolution for better feature extraction</p>
+                            </div>
+                        </div>
+                        <div class="model-feature">
+                            <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="feature-info">
+                                <h4>Depthwise Separable Convolutions</h4>
+                                <p>Factorizes standard convolutions for reduced computation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="models-section fade-in-up" style="animation-delay: 0.6s;">
+        <h2>Current <span class="highlight">Selection</span></h2>
+        <div class="current-model-container">
+            <div class="current-model-info">
+                <h3>Selected Model: <span id="selected-model-name">EfficientNet B3</span></h3>
+                <p>Your disease detection will use this model. You can change your selection at any time.</p>
+            </div>
+            <div class="model-actions">
+                <a href="/" class="action-btn">
+                    <i class="fas fa-leaf"></i> Go to Detection
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set the initial selected model from localStorage or default
+        const currentModel = localStorage.getItem('selectedModel') || 'efficientnet';
+        updateSelectedModel(currentModel);
+        highlightSelectedModelCard(currentModel);
+        
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons and panes
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding pane
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Model selection functionality
+        const selectButtons = document.querySelectorAll('.select-model-btn');
+        selectButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const modelKey = this.getAttribute('data-model');
+                
+                // Save selection to localStorage
+                localStorage.setItem('selectedModel', modelKey);
+                
+                // Update UI
+                updateSelectedModel(modelKey);
+                highlightSelectedModelCard(modelKey);
+                
+                // Show confirmation message
+                showConfirmation(modelKey);
+            });
+        });
+        
+        function updateSelectedModel(modelKey) {
+            // Update the displayed model name
+            const modelNames = {
+                'custom_cnn': 'Custom CNN',
+                'resnet50': 'ResNet50',
+                'efficientnet': 'EfficientNet B3',
+                'mobilenet': 'MobileNet V2'
+            };
+            
+            document.getElementById('selected-model-name').textContent = modelNames[modelKey] || 'EfficientNet B3';
+        }
+        
+        function highlightSelectedModelCard(modelKey) {
+            // Remove highlight from all cards
+            document.querySelectorAll('.model-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add highlight to selected card
+            const selectedCard = document.querySelector(`.model-card[data-model="${modelKey}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+            }
+        }
+        
+        function showConfirmation(modelKey) {
+            // Create confirmation element
+            const confirmation = document.createElement('div');
+            confirmation.className = 'model-selection-confirmation';
+            
+            const modelNames = {
+                'custom_cnn': 'Custom CNN',
+                'resnet50': 'ResNet50',
+                'efficientnet': 'EfficientNet B3',
+                'mobilenet': 'MobileNet V2'
+            };
+            
+            confirmation.innerHTML = `
+                <div class="confirmation-content">
+                    <i class="fas fa-check-circle"></i>
+                    <p>${modelNames[modelKey] || 'Model'} selected successfully!</p>
+                </div>
+            `;
+            
+            // Add to body
+            document.body.appendChild(confirmation);
+            
+            // Remove after animation
+            setTimeout(() => {
+                confirmation.classList.add('show');
+                
+                setTimeout(() => {
+                    confirmation.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(confirmation);
+                    }, 500);
+                }, 2000);
+            }, 10);
+        }
+    });
+</script>
+{% endblock %}
