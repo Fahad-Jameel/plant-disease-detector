@@ -502,6 +502,91 @@
         counters.forEach(counter => {
             counterObserver.observe(counter);
         });
+        
     });
+    // Check model availability
+function checkModelStatus() {
+    fetch('/models/status')
+        .then(response => response.json())
+        .then(data => {
+            const modelSelect = document.getElementById('model-select');
+            if (modelSelect) {
+                // Update each option with availability status
+                Array.from(modelSelect.options).forEach(option => {
+                    const modelData = data[option.value];
+                    if (modelData && !modelData.available) {
+                        option.text = `${option.text} (Not loaded)`;
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error checking model status:', error);
+        });
+}
+
+// Check model status when page loads
+checkModelStatus();
+
+// Add event listener to model select dropdown
+if (modelSelect) {
+    modelSelect.addEventListener('change', function() {
+        const selectedModel = this.value;
+        
+        // Check if model is available
+        fetch('/models/status')
+            .then(response => response.json())
+            .then(data => {
+                if (data[selectedModel] && !data[selectedModel].available) {
+                    // Model not available, show download prompt
+                    if (confirm(`The ${data[selectedModel].name} model needs to be downloaded first. This may take a few minutes. Download now?`)) {
+                        // Show loading indicator
+                        const loadingIndicator = document.createElement('div');
+                        loadingIndicator.className = 'model-loading-indicator';
+                        loadingIndicator.innerHTML = `
+                            <div class="loading-spinner"></div>
+                            <p>Downloading ${data[selectedModel].name} model...</p>
+                            <p class="small">This may take a few minutes. Please don't close this page.</p>
+                        `;
+                        document.body.appendChild(loadingIndicator);
+                        
+                        // Trigger model download
+                        fetch(`/models/download/${selectedModel}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                // Remove loading indicator
+                                document.body.removeChild(loadingIndicator);
+                                
+                                if (data.success) {
+                                    alert(`Model downloaded successfully! You can now use it for analysis.`);
+                                    // Update the model select option text
+                                    Array.from(modelSelect.options).forEach(option => {
+                                        if (option.value === selectedModel) {
+                                            option.text = AVAILABLE_MODELS[selectedModel].name;
+                                        }
+                                    });
+                                } else {
+                                    alert(`Error downloading model: ${data.error}`);
+                                }
+                            })
+                            .catch(error => {
+                                // Remove loading indicator
+                                document.body.removeChild(loadingIndicator);
+                                alert(`Error downloading model: ${error}`);
+                            });
+                    } else {
+                        // User cancelled download, revert selection
+                        this.value = localStorage.getItem('selectedModel') || 'efficientnet';
+                    }
+                } else {
+                    // Model available, save selection
+                    localStorage.setItem('selectedModel', selectedModel);
+                }
+            })
+            .catch(error => {
+                console.error('Error checking model status:', error);
+            });
+    });
+}
 </script>
 {% endblock %}

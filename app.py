@@ -10,6 +10,7 @@ import cv2
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
+import gdown  # For downloading models from Google Drive
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -17,8 +18,9 @@ app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.config['MODEL_FOLDER'] = 'models'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max upload size
 
-# Ensure upload directory exists
+# Ensure upload and model directories exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+os.makedirs(app.config['MODEL_FOLDER'], exist_ok=True)
 
 # Disease information dictionary
 with open('disease_info.json', 'r') as f:
@@ -67,9 +69,35 @@ AVAILABLE_MODELS = {
     }
 }
 
+# Model Google Drive URLs
+MODEL_URLS = {
+    'custom_cnn': 'https://drive.google.com/uc?id=1p4aEkqeKyC0q8pz40TNWZ9qlHt_TKmDT',
+    'resnet50': 'https://drive.google.com/uc?id=1k2994YpbE-4Y8NTXihQ4uoHxPVHr0JSB',
+    'efficientnet': 'https://drive.google.com/uc?id=10qQfIIn-v4Ps5gXmmCz_QN_8UwBzDdZl',
+    'mobilenet': 'https://drive.google.com/uc?id=1p4aEkqeKyC0q8pz40TNWZ9qlHt_TKmDT'
+}
+
 # Default model
 DEFAULT_MODEL = 'efficientnet'
 IMG_SIZE = 256
+
+# Function to ensure models are available
+def ensure_models_available():
+    """Download models if not available locally"""
+    os.makedirs(app.config['MODEL_FOLDER'], exist_ok=True)
+    
+    for model_name, url in MODEL_URLS.items():
+        model_path = os.path.join(app.config['MODEL_FOLDER'], AVAILABLE_MODELS[model_name]['file'])
+        if not os.path.exists(model_path):
+            print(f"Downloading {model_name} model...")
+            try:
+                gdown.download(url, model_path, quiet=False)
+                print(f"Downloaded {model_name} model")
+            except Exception as e:
+                print(f"Error downloading {model_name} model: {e}")
+
+# Call this function at app startup
+ensure_models_available()
 
 # Load the default model at startup
 loaded_models = {}
@@ -79,11 +107,31 @@ def load_model(model_name):
     if model_name not in loaded_models:
         model_path = os.path.join(app.config['MODEL_FOLDER'], AVAILABLE_MODELS[model_name]['file'])
         if os.path.exists(model_path):
-            loaded_models[model_name] = tf.keras.models.load_model(model_path)
-            print(f"Loaded model: {model_name}")
+            try:
+                loaded_models[model_name] = tf.keras.models.load_model(model_path)
+                print(f"Loaded model: {model_name}")
+            except Exception as e:
+                print(f"Error loading model {model_name}: {e}")
+                return None
         else:
             print(f"Model file not found: {model_path}")
-            return None
+            
+            # Try to download the model
+            try:
+                url = MODEL_URLS.get(model_name)
+                if url:
+                    print(f"Attempting to download {model_name} model...")
+                    gdown.download(url, model_path, quiet=False)
+                    print(f"Downloaded {model_name} model, loading...")
+                    loaded_models[model_name] = tf.keras.models.load_model(model_path)
+                    print(f"Loaded model: {model_name}")
+                else:
+                    print(f"No URL available for {model_name} model")
+                    return None
+            except Exception as e:
+                print(f"Error downloading or loading model {model_name}: {e}")
+                return None
+    
     return loaded_models[model_name]
 
 # Preload the default model
@@ -296,6 +344,43 @@ def dataset_info():
         'class_names': list(CLASS_MAPPING.values())
     })
 
+# Model status route to check if models are available
+@app.route('/models/status')
+def models_status():
+    """Return the status of model downloads"""
+    status = {}
+    for model_name in AVAILABLE_MODELS:
+        model_path = os.path.join(app.config['MODEL_FOLDER'], AVAILABLE_MODELS[model_name]['file'])
+        status[model_name] = {
+            'name': AVAILABLE_MODELS[model_name]['name'],
+            'available': os.path.exists(model_path),
+            'size_mb': round(os.path.getsize(model_path) / (1024 * 1024), 2) if os.path.exists(model_path) else None
+        }
+    
+    return jsonify(status)
+
+# Download a specific model
+@app.route('/models/download/<model_name>')
+def download_model(model_name):
+    """Trigger download of a specific model"""
+    if model_name not in AVAILABLE_MODELS:
+        return jsonify({'success': False, 'error': f'Unknown model: {model_name}'})
+    
+    model_path = os.path.join(app.config['MODEL_FOLDER'], AVAILABLE_MODELS[model_name]['file'])
+    
+    if os.path.exists(model_path):
+        return jsonify({'success': True, 'message': f'Model {model_name} is already downloaded'})
+    
+    url = MODEL_URLS.get(model_name)
+    if not url:
+        return jsonify({'success': False, 'error': f'No download URL for model: {model_name}'})
+    
+    try:
+        gdown.download(url, model_path, quiet=False)
+        return jsonify({'success': True, 'message': f'Model {model_name} downloaded successfully'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': f'Error downloading model: {str(e)}'})
+
 # Error handling
 @app.errorhandler(404)
 def page_not_found(e):
@@ -304,10 +389,6 @@ def page_not_found(e):
 @app.errorhandler(500)
 def server_error(e):
     return render_template('500.html'), 500
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
-
 
 if __name__ == '__main__':
     # Use environment variable for port if available (for deployment)
