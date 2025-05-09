@@ -523,9 +523,7 @@ function checkModelStatus() {
         .catch(error => {
             console.error('Error checking model status:', error);
         });
-}
-
-// Check model status when page loads
+        // Check model status when page loads
 checkModelStatus();
 
 // Add event listener to model select dropdown
@@ -588,5 +586,8 @@ if (modelSelect) {
             });
     });
 }
+}
+
+
 </script>
 {% endblock %}
